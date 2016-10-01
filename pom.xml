@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>telegram-quickstart</artifactId>
+    <artifactId>telegram-webcam-quickstart</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Telegram Quickstart</name>
+    <name>Telegram and Webcam Quickstart</name>
     <description>A quickstart to create a telegram Bot based on Apache Camel</description>
 
     <contributors>
@@ -17,18 +17,20 @@
             <email>ni.ferraro@gmail.com</email>
             <url>http://www.nicolaferraro.me/</url>
         </contributor>
+        <contributor>
+            <name>Taariq Levack</name>
+            <email>taariql@gmail.com</email>
+        </contributor>
     </contributors>
 
-    <!-- It is a spring-boot application -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.5.RELEASE</version>
-    </parent>
 
     <properties>
         <!-- Using the snapshot version, until official release -->
         <camel.version>2.18-SNAPSHOT</camel.version>
+        <rhiot.version>0.1.4</rhiot.version>
+        <spring-boot.version>1.3.7.RELEASE</spring-boot.version>
+        <camel.version>2.18-SNAPSHOT</camel.version>
+        <webcam-capture.version>0.3.11</webcam-capture.version>
     </properties>
 
     <dependencies>
@@ -43,6 +45,23 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.sarxos</groupId>
+            <artifactId>webcam-capture</artifactId>
+            <version>${webcam-capture.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.sarxos</groupId>
+            <artifactId>webcam-capture-driver-v4l4j</artifactId>
+            <version>${webcam-capture.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rhiot</groupId>
+            <artifactId>camel-webcam</artifactId>
+            <version>${rhiot.version}</version>
         </dependency>
 
     </dependencies>
@@ -73,6 +92,23 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>com.example.TelegramBotApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
     </build>
