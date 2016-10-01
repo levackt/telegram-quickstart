@@ -15,13 +15,6 @@ To get an image from your webcam, type /cam
 
 You can change the [Bot](src/main/java/com/example/Bot.java) class to customize the behavior.
 
-# build
-You can also package and run the fatjar as follows;
-
-    mvn clean install
-
-    java -jar telegram-webcam-quickstart-1.0.0-SNAPSHOT.jar
-
 
 
 
